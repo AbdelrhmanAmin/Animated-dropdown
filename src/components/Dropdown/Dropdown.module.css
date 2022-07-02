@@ -1,0 +1,12 @@
+.dropDownMenu {
+  @apply w-72 p-2 rounded-md
+  flex flex-col space-y-1
+  justify-center items-center
+  bg-gray-800 text-white;
+}
+
+.dropDownItem {
+  @apply flex w-full items-center
+  rounded-md p-4 
+  font-medium bg-transparent hover:bg-gray-700;
+}
