@@ -14,11 +14,14 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
 
   const calcHeight = (elm) => {
     const height = elm.offsetHeight;
-    const PADDING_HEIGHT = 16;
+    const PADDING_HEIGHT = 3;
     setMenuHeight(height + PADDING_HEIGHT);
   };
   return (
-    <div ref={menuRef} className="relative flex flex-col items-center sm:items-end">
+    <div
+      ref={menuRef}
+      className="relative flex flex-col items-center sm:items-end"
+    >
       <Button onClick={() => setOpen(!isOpen)}>{isOpen ? "👆" : "👇"}</Button>
       {isOpen && (
         <div
@@ -69,9 +72,8 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
                 listTwo.map(({ icon, label }, i) => (
                   <DropdownItem
                     key={i}
-                    iconRight={icon}
-                    iconLeft="👈"
-                    onClick={() => setActiveList("primary")}
+                    iconLeft={i === 0 ? "👈" : icon}
+                    onClick={() => i === 0 && setActiveList("primary")}
                   >
                     {label}
                   </DropdownItem>
@@ -102,7 +104,9 @@ const DropdownItem = ({
       ) : (
         iconLeft
       )}
-      <div className={cn("mx-2")}>{children}</div>
+      <div className={cn(iconLeft && "ml-2", iconRight && "mr-2")}>
+        {children}
+      </div>
       {iconRight && typeof iconRight === "string" ? (
         <span>{iconRight}</span>
       ) : (
