@@ -1,5 +1,5 @@
 .root {
-  @apply bg-gray-800 hover:bg-gray-700
+  @apply bg-yellow-500 hover:bg-yellow-600
   transition scale-100 focus:scale-95
   px-8 py-4
   font-semibold text-white

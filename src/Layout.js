@@ -1,4 +1,4 @@
-import { Button, DropdownMenu } from "./components";
+import { DropdownMenu } from "./components";
 
 const Layout = () => {
   return (
