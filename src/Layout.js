@@ -2,10 +2,10 @@ import { Button, DropdownMenu } from "./components";
 
 const Layout = () => {
   return (
-    <div className="flex items-center justify-center bg-gray-900 h-screen">
-      <div className="flex flex-col items-center ">
+    <div className="flex p-10 justify-center bg-gray-900 h-screen">
+      <div className="relative flex flex-col items-center ">
         <Button>OPEN ME</Button>
-        <DropdownMenu data={
+        <DropdownMenu list={
           [
             {
               icon: "http://cdn.onlinewebfonts.com/svg/img_537102.png",

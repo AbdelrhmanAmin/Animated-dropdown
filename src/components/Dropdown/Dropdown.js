@@ -1,16 +1,27 @@
 import cn from "classnames";
 import s from "./Dropdown.module.css";
 
-const DropdownMenu = ({ data, className }) => {
+const DropdownMenu = ({ list, className }) => {
   return (
-    <div className={cn(s.dropDownMenu, className)}>
-      {data &&
-        data.length > 0 &&
-        data.map(({ icon, label, onClick }) => (
-          <DropdownItem key={label} icon={icon} onClick={onClick}>
-            {label}
-          </DropdownItem>
-        ))}
+    <div className={cn(s.menuContainer, className)}>
+      <div className={s.menu}>
+        {list &&
+          list.length > 0 &&
+          list.map(({ icon, label, onClick }) => (
+            <DropdownItem key={label} icon={icon} onClick={onClick}>
+              {label}
+            </DropdownItem>
+          ))}
+      </div>
+      <div className={s.menu}>
+        {list &&
+          list.length > 0 &&
+          list.map(({ icon, label, onClick }) => (
+            <DropdownItem key={label} icon={icon} onClick={onClick}>
+              {label}
+            </DropdownItem>
+          ))}
+      </div>
     </div>
   );
 };

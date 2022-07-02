@@ -1,8 +1,12 @@
-.dropDownMenu {
+.menuContainer {
   @apply w-72 p-2 rounded-md
-  flex flex-col space-y-1
-  justify-center items-center
+  absolute top-16 overflow-hidden
   bg-gray-800 text-white;
+  transform: translateX(-45%)
+}
+
+.menu {
+  @apply flex flex-col space-y-1 items-center justify-center;
 }
 
 .dropDownItem {
