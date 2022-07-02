@@ -1,8 +1,9 @@
 .menuContainer {
   @apply w-72 p-2 rounded-md
   absolute top-16 overflow-hidden
-  bg-gray-800 text-white;
-  transform: translateX(-45%)
+  bg-gray-800 text-white
+  ease-in-out duration-200;
+  transform: translateX(-45%);
 }
 
 .menu {

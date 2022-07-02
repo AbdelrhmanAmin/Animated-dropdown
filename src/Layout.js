@@ -4,26 +4,44 @@ const Layout = () => {
   return (
     <div className="flex p-10 justify-center bg-gray-900 h-screen">
       <div className="relative flex flex-col items-center ">
-        <Button>OPEN ME</Button>
-        <DropdownMenu list={
-          [
+        <DropdownMenu
+          listOne={[
             {
-              icon: "http://cdn.onlinewebfonts.com/svg/img_537102.png",
-              label: "Settings",
-              onClick: () => {},
+              icon: "👨‍💻",
+              label: "One",
             },
             {
-              icon: "http://cdn.onlinewebfonts.com/svg/img_537102.png",
-              label: "Settings",
-              onClick: () => {},
+              icon: "👽",
+              label: "Two",
             },
             {
-              icon: "http://cdn.onlinewebfonts.com/svg/img_537102.png",
-              label: "Settings",
-              onClick: () => {},
+              icon: "🤖",
+              label: "Three",
             },
-          ]
-        } />
+          ]}
+          listTwo={[
+            {
+              icon: "👩‍🏫",
+              label: "Four",
+            },
+            {
+              icon: "👩‍🚒",
+              label: "Five",
+            },
+            {
+              icon: "🦸‍♀️",
+              label: "Six",
+            },
+            {
+              icon: "👩‍🎨",
+              label: "Seven",
+            },
+            {
+              icon: "👨‍⚖️",
+              label: "Eight",
+            },
+          ]}
+        />
       </div>
     </div>
   );

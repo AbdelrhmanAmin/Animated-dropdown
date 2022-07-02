@@ -1,28 +1,61 @@
 import cn from "classnames";
+import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import Button from "../Button";
 import s from "./Dropdown.module.css";
+import "./dropdown.css";
 
-const DropdownMenu = ({ list, className }) => {
+const DropdownMenu = ({ listOne, listTwo, className }) => {
+  const [isOpen, setOpen] = useState(false);
+  const [activeList, setActiveList] = useState("primary");
   return (
-    <div className={cn(s.menuContainer, className)}>
-      <div className={s.menu}>
-        {list &&
-          list.length > 0 &&
-          list.map(({ icon, label, onClick }) => (
-            <DropdownItem key={label} icon={icon} onClick={onClick}>
-              {label}
-            </DropdownItem>
-          ))}
-      </div>
-      <div className={s.menu}>
-        {list &&
-          list.length > 0 &&
-          list.map(({ icon, label, onClick }) => (
-            <DropdownItem key={label} icon={icon} onClick={onClick}>
-              {label}
-            </DropdownItem>
-          ))}
-      </div>
-    </div>
+    <>
+      <Button onClick={() => setOpen(!isOpen)}>OPEN ME</Button>
+      {isOpen && (
+        <div className={cn(s.menuContainer, className)}>
+          <CSSTransition
+            in={activeList === "primary"}
+            timeout={500}
+            unmountOnExit
+            classNames="menu-primary"
+          >
+            <div className={s.menu}>
+              {listOne &&
+                listOne.length > 0 &&
+                listOne.map(({ icon, label }, i) => (
+                  <DropdownItem
+                    key={i}
+                    icon={icon}
+                    onClick={() => setActiveList("secondary")}
+                  >
+                    {label}
+                  </DropdownItem>
+                ))}
+            </div>
+          </CSSTransition>
+          <CSSTransition
+            in={activeList === "secondary"}
+            timeout={500}
+            unmountOnExit
+            classNames="menu-secondary"
+          >
+            <div className={s.menu}>
+              {listTwo &&
+                listTwo.length > 0 &&
+                listTwo.map(({ icon, label }, i) => (
+                  <DropdownItem
+                    key={i}
+                    icon={icon}
+                    onClick={() => setActiveList("primary")}
+                  >
+                    {label}
+                  </DropdownItem>
+                ))}
+            </div>
+          </CSSTransition>
+        </div>
+      )}
+    </>
   );
 };
 
@@ -35,9 +68,7 @@ const DropdownItem = ({ children, icon, onClick, className }) => {
     >
       {icon && (
         <div className={cn("flex items-center")}>
-          <div className={cn("flex-shrink-0")}>
-            <img className={cn("w-6 h-6")} src={icon} alt="" />
-          </div>
+          <div className={cn("flex-shrink-0")}>{icon}</div>
           <div className={cn("ml-2")}>{children}</div>
         </div>
       )}
