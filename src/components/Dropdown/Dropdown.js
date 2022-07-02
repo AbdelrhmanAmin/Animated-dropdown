@@ -1,6 +1,7 @@
 import cn from "classnames";
 import { useEffect, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { useDetectClickOutside } from "../../utils/useDetectClickOutside";
 import Button from "../Button";
 import s from "./Dropdown.module.css";
 
@@ -8,6 +9,8 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
   const [isOpen, setOpen] = useState(false);
   const [activeList, setActiveList] = useState("primary");
   const [menuHeight, setMenuHeight] = useState("auto");
+  const menuRef = useRef(null);
+  useDetectClickOutside(menuRef, () => setOpen(false));
 
   const calcHeight = (elm) => {
     const height = elm.offsetHeight;
@@ -15,7 +18,7 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
     setMenuHeight(height + PADDING_HEIGHT);
   };
   return (
-    <>
+    <div ref={menuRef} className="relative">
       <Button onClick={() => setOpen(!isOpen)}>{isOpen ? "👆" : "👇"}</Button>
       {isOpen && (
         <div
@@ -77,7 +80,7 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
           </CSSTransition>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
