@@ -1,5 +1,5 @@
 .menuContainer {
-  @apply w-72 p-2 rounded-md
+  @apply w-72 rounded-md
   absolute top-16 overflow-hidden
   bg-gray-800 text-white
   ease-in-out duration-200;
@@ -7,11 +7,12 @@
 }
 
 .menu {
-  @apply flex flex-col space-y-1 items-center justify-center;
+  @apply flex flex-col w-full
+  space-y-1 p-2 ;
 }
 
 .dropDownItem {
-  @apply flex w-full items-center
+  @apply flex items-center
   rounded-md p-4 
   font-medium bg-transparent hover:bg-gray-700;
 }

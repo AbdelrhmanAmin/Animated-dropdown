@@ -7,11 +7,7 @@ import s from "./Dropdown.module.css";
 const DropdownMenu = ({ listOne, listTwo, className }) => {
   const [isOpen, setOpen] = useState(false);
   const [activeList, setActiveList] = useState("primary");
-  const [menuHeight, setMenuHeight] = useState(0);
-  const dropDownRef = useRef(null);
-  useEffect(() => {
-    setMenuHeight(dropDownRef.current?.firstChild.offsetHeight);
-  }, []);
+  const [menuHeight, setMenuHeight] = useState("auto");
 
   const calcHeight = (elm) => {
     const height = elm.offsetHeight;
@@ -44,7 +40,8 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
                 listOne.map(({ icon, label }, i) => (
                   <DropdownItem
                     key={i}
-                    icon={icon}
+                    iconLeft={icon}
+                    iconRight={<div className="ml-auto">👉</div>}
                     onClick={() => setActiveList("secondary")}
                   >
                     {label}
@@ -69,7 +66,8 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
                 listTwo.map(({ icon, label }, i) => (
                   <DropdownItem
                     key={i}
-                    icon={icon}
+                    iconRight={icon}
+                    iconLeft="👈"
                     onClick={() => setActiveList("primary")}
                   >
                     {label}
@@ -83,20 +81,30 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
   );
 };
 
-const DropdownItem = ({ children, icon, onClick, className }) => {
+const DropdownItem = ({
+  children,
+  iconLeft,
+  iconRight,
+  onClick,
+  className,
+}) => {
   return (
     <div
       className={cn(s.dropDownItem, className)}
       role="button"
       onClick={onClick}
     >
-      {icon && (
-        <div className={cn("flex items-center")}>
-          <div className={cn("flex-shrink-0")}>{icon}</div>
-          <div className={cn("ml-2")}>{children}</div>
-        </div>
+      {iconLeft && typeof iconLeft === "string" ? (
+        <span>{iconLeft}</span>
+      ) : (
+        iconLeft
       )}
-      {!icon && children}
+      <div className={cn("mx-2")}>{children}</div>
+      {iconRight && typeof iconRight === "string" ? (
+        <span>{iconRight}</span>
+      ) : (
+        iconRight
+      )}
     </div>
   );
 };
