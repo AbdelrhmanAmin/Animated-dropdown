@@ -1,6 +1,6 @@
 .menuContainer {
   @apply w-72 rounded-md
-  absolute top-16 right-0 overflow-hidden
+  absolute top-16 overflow-hidden
   bg-gray-800 text-white
   ease-in-out duration-200;
 }

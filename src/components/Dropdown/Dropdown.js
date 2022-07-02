@@ -18,7 +18,7 @@ const DropdownMenu = ({ listOne, listTwo, className }) => {
     setMenuHeight(height + PADDING_HEIGHT);
   };
   return (
-    <div ref={menuRef} className="relative">
+    <div ref={menuRef} className="relative flex flex-col items-center sm:items-end">
       <Button onClick={() => setOpen(!isOpen)}>{isOpen ? "👆" : "👇"}</Button>
       {isOpen && (
         <div
